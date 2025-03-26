@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5A7D7F432D9334CC00BBA4C8 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 5A7D7F422D9334CC00BBA4C8 /* SQLite */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5ADFA0322D8F842100A386E9 /* MTrackerUK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTrackerUK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A7D7F432D9334CC00BBA4C8 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = MTrackerUK;
 			packageProductDependencies = (
+				5A7D7F422D9334CC00BBA4C8 /* SQLite */,
 			);
 			productName = MTrackerUK;
 			productReference = 5ADFA0322D8F842100A386E9 /* MTrackerUK.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 5ADFA0292D8F842100A386E9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5A7D7F412D9334CC00BBA4C8 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5ADFA0332D8F842100A386E9 /* Products */;
 			projectDirPath = "";
@@ -335,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A7D7F412D9334CC00BBA4C8 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A7D7F422D9334CC00BBA4C8 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A7D7F412D9334CC00BBA4C8 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5ADFA02A2D8F842100A386E9 /* Project object */;
 }

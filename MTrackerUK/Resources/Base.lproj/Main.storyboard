@@ -129,37 +129,39 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJW-V3-INm">
                                                     <rect key="frame" x="36" y="19" width="321" height="162"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" ambiguous="YES" text="GAD-7" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACc-Ok-BOa">
-                                                            <rect key="frame" x="132" y="16" width="57.333333333333343" height="21.666666666666671"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GAD-7" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACc-Ok-BOa">
+                                                            <rect key="frame" x="16.000000000000004" y="8.0000000000000018" width="57.333333333333343" height="21.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrn-1D-2Hh">
-                                                            <rect key="frame" x="130" y="98.333333333333329" width="61.333333333333343" height="47.666666666666671"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrn-1D-2Hh">
+                                                            <rect key="frame" x="16.000000000000004" y="106" width="61.333333333333343" height="48"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="48" id="zhy-tg-bfw"/>
+                                                            </constraints>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="tinted" title="Start"/>
                                                             <connections>
                                                                 <segue destination="r8z-Ke-H39" kind="show" id="Hek-ho-9ZV"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="12 Question Anxiety Questionaire. Let's see how this scales. Hopefully, it will work" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMs-Lw-yKZ">
-                                                            <rect key="frame" x="16" y="45.666666666666671" width="289" height="28.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 Question Anxiety Questionaire. Let's see how this scales. Hopefully, it will work" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMs-Lw-yKZ">
+                                                            <rect key="frame" x="16" y="37.666666666666671" width="289" height="33.666666666666671"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="lMs-Lw-yKZ" secondAttribute="trailing" constant="16" id="932-tw-Eox"/>
-                                                        <constraint firstItem="ACc-Ok-BOa" firstAttribute="centerX" secondItem="iJW-V3-INm" secondAttribute="centerX" id="Png-v3-HyJ"/>
-                                                        <constraint firstItem="rrn-1D-2Hh" firstAttribute="top" secondItem="lMs-Lw-yKZ" secondAttribute="bottom" constant="23.999999999999972" id="Rbe-iU-ifZ"/>
-                                                        <constraint firstItem="rrn-1D-2Hh" firstAttribute="centerX" secondItem="iJW-V3-INm" secondAttribute="centerX" id="kk8-cC-ppx"/>
-                                                        <constraint firstItem="lMs-Lw-yKZ" firstAttribute="top" secondItem="ACc-Ok-BOa" secondAttribute="bottom" constant="8" id="mb2-j9-wIV"/>
-                                                        <constraint firstItem="lMs-Lw-yKZ" firstAttribute="leading" secondItem="iJW-V3-INm" secondAttribute="leading" constant="16" id="n0C-Dp-mpl"/>
-                                                        <constraint firstAttribute="bottom" secondItem="rrn-1D-2Hh" secondAttribute="bottom" constant="16" id="rkN-2v-Vpp"/>
-                                                        <constraint firstItem="ACc-Ok-BOa" firstAttribute="top" secondItem="iJW-V3-INm" secondAttribute="top" constant="16" id="suF-YP-RDL"/>
+                                                        <constraint firstItem="lMs-Lw-yKZ" firstAttribute="top" secondItem="ACc-Ok-BOa" secondAttribute="bottom" constant="8" id="2e1-gv-yZe"/>
+                                                        <constraint firstAttribute="bottom" secondItem="rrn-1D-2Hh" secondAttribute="bottom" constant="8" id="JsR-yS-4eJ"/>
+                                                        <constraint firstItem="ACc-Ok-BOa" firstAttribute="leading" secondItem="iJW-V3-INm" secondAttribute="leading" constant="16" id="R5M-1o-IOb"/>
+                                                        <constraint firstItem="ACc-Ok-BOa" firstAttribute="top" secondItem="iJW-V3-INm" secondAttribute="top" constant="8" id="RGB-97-Osv"/>
+                                                        <constraint firstItem="rrn-1D-2Hh" firstAttribute="leading" secondItem="iJW-V3-INm" secondAttribute="leading" constant="16" id="aVO-FJ-Lwh"/>
+                                                        <constraint firstItem="lMs-Lw-yKZ" firstAttribute="leading" secondItem="iJW-V3-INm" secondAttribute="leading" constant="16" id="geD-CQ-7Zj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="lMs-Lw-yKZ" secondAttribute="trailing" constant="16" id="pUP-tX-O2D"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
