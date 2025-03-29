@@ -11,6 +11,6 @@ struct Answer {
     var id: Int64?
     let resultId: Int64
     let questionId: Int64
-    let value: Int
+    let value: Int64
     var questionText: String?
 }

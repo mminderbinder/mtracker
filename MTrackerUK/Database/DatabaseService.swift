@@ -28,19 +28,19 @@ class DatabaseService {
     private let questionId = SQLite.Expression<Int64>("id")
     private let questionAssessmentId = SQLite.Expression<Int64>("assessmentId")
     private let questionText = SQLite.Expression<String>("questionText")
-    private let questionOrder = SQLite.Expression<Int>("questionOrder")
+    private let questionOrder = SQLite.Expression<Int64>("questionOrder")
     
     
     private let resultId = SQLite.Expression<Int64>("id")
     private let resultAssessmentId = SQLite.Expression<Int64>("assessmentId")
-    private let score = SQLite.Expression<Int>("score")
+    private let score = SQLite.Expression<Int64>("score")
     private let impairmentCategory = SQLite.Expression<String>("impairmentCategory")
     private let dateTaken = SQLite.Expression<Date>("dateTaken")
     
     private let answerId = SQLite.Expression<Int64>("id")
     private let answerResultId = SQLite.Expression<Int64>("resultId")
     private let answerQuestionId = SQLite.Expression<Int64>("questionId")
-    private let value = SQLite.Expression<Int>("value")
+    private let value = SQLite.Expression<Int64>("value")
 
     
     private init() {
@@ -55,7 +55,7 @@ class DatabaseService {
             
             db = try Connection("\(path)/mtracker.sqlite3")
             createTables()
-            insertAssessmentData()
+            seedAssessmentData()
             
         } catch {
             print("Database connection failed: \(error)")
@@ -108,84 +108,21 @@ class DatabaseService {
         }
     }
     
-    private func insertAssessmentData() {
+    private func seedAssessmentData() {
         do {
-            
             let count = try db.scalar(assessmentTable.count)
+            
             if count == 0 {
-                
-                let gad7Assessment = Assessment(
-                    id: nil,
-                    abbreviation: "GAD-7",
-                    name: "General Anxiety Disorder 7",
-                    description: "This easy-to-use self-administered questionnaire is used as a screening tool and severity measure for generalized anxiety disorder",
-                    instructions: "Over the last two weeks, how often have you been bothered by any of the following problems?",
-                    frequency: "Once every two weeks"
-                    
-                )
-                
-                let phqAssessment = Assessment(
-                    id: nil,
-                    abbreviation: "PHQ-9",
-                    name: "Patient Health Questionnaire 9",
-                    description: "This short, self-administered questionnaire is used as a screening tool and severity measure for major depressive disorder",
-                    instructions: "Over the last two weeks, how often have you been bothered by any of the following problems?",
-                    frequency: "Once every two weeks"
-                    
-                    )
-                
-                if let gadId = insertAssessment(gad7Assessment) {
-                    
-                    let gadQuestions = [
-                        "Feeling nervous, anxious, or on edge",
-                        "Not being able to stop or control worrying",
-                        "Worrying too much about different things",
-                        "Trouble relaxing",
-                        "Being so restless that it's hard to sit still",
-                        "Becoming easily annoyed or irritable",
-                        "Feeling afraid as if something awful might happen"
-                    ]
-                    
-                    for(index, questionText) in gadQuestions.enumerated() {
-                        let question = Question(
-                            id: nil,
-                            assessmentId: gadId,
-                            questionText: questionText,
-                            questionOrder: index + 1
-                        )
-                        _ = insertQuestion(question)
-                    }
-                }
-                
-                if let phqId = insertAssessment(phqAssessment) {
-                    
-                    let phqQuestions = [
-                        "Little interest or pleasure in doing things?",
-                        "Feeling down, depressed, or hopeless?",
-                        "Trouble falling or staying asleep or sleeping too much?",
-                        "Feeling tired or having little energy",
-                        "Poor appetite or overeating?",
-                        "Feeling bad about yourself - or that you are a failure or have let yourself or your family down?",
-                        "Trouble concentrating on things, such as reading the newspaper or watching television?",
-                        "Moving or speaking so slowly that other people could have noticed? Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual?",
-                        "Thoughts that you would be better off dead, or of hurting yourself in some way?"
-                    ]
-                    
-                    for(index, questionText) in phqQuestions.enumerated() {
-                        let question = Question(
-                            id: nil,
-                            assessmentId: phqId,
-                            questionText: questionText,
-                            questionOrder: index + 1
-                        )
-                       _ = insertQuestion(question)
-                    }
+                for seed in SeedData.all {
+                    insertAssessmentQuestions(seed.assessment, questions: seed.questions)
                 }
             }
+            
         } catch {
             print("Error occurred while seeding database: \(error)")
         }
     }
+    
     
     func insertAssessment(_ assessment: Assessment) -> Int64? {
         do {
@@ -200,6 +137,21 @@ class DatabaseService {
         } catch {
             print("Error occurred while trying to insert assessment: \(error)")
             return nil
+        }
+    }
+    
+    private func insertAssessmentQuestions(_ assessment: Assessment, questions: [String]) {
+        
+        if let assessmentId = insertAssessment(assessment) {
+            for (index, questionText) in questions.enumerated() {
+                let question = Question(
+                    id: nil,
+                    assessmentId: assessmentId,
+                    questionText: questionText,
+                    questionOrder: Int64(index + 1)
+                )
+                _ = insertQuestion(question)
+            }
         }
     }
     
@@ -263,5 +215,54 @@ class DatabaseService {
             print("Error retrieving assessments: \(error)")
         }
         return assessments
+    }
+    
+    func retrieveAssessment(abbreviation: String) -> Assessment? {
+        do {
+            let query = assessmentTable.filter(self.abbreviation == abbreviation)
+            
+            if let row = try db.pluck(query) {
+                return Assessment(
+                    id: row[assessmentId],
+                    abbreviation: row[self.abbreviation],
+                    name: row[name],
+                    description:  row[description],
+                    instructions: row[instructions],
+                    frequency: row[frequency]
+                )
+            }
+            
+        } catch {
+            print("Error occurred while trying to retrieve assessment: \(error)")
+        }
+        return nil
+    }
+    
+    func retrieveAssessmentQuestions(for abbreviation: String) -> [Question] {
+        var questions = [Question]()
+        
+        do {
+            if let assessment = retrieveAssessment(abbreviation: abbreviation),
+                let assessmentId = assessment.id {
+                
+                let query = questionTable
+                    .filter(questionAssessmentId == assessmentId)
+                    .order(questionOrder)
+                
+                for row in try db.prepare(query) {
+                    let question = Question(
+                        id: row[questionId],
+                        assessmentId: row[questionAssessmentId],
+                        questionText: row[questionText],
+                        questionOrder: row[questionOrder])
+                    
+                    questions.append(question)
+                }
+            }
+            
+        } catch {
+            print("Error occurred while trying to retrieve assessment questions: \(error)")
+        }
+        return questions
     }
 }

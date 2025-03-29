@@ -22,7 +22,6 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
 
         viewModel.onDataUpdated = { [weak self] in
-            print("Data updated in ViewModel, reloading table view")
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }

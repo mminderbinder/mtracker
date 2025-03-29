@@ -10,7 +10,7 @@ import Foundation
 struct Result {
     var id: Int64?
     let assessmentId: Int64
-    let score: Int
+    let score: Int64
     let impairmentCategory: String
     let dateTaken: Date
     var answers: [Answer] = []

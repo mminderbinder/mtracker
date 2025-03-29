@@ -14,7 +14,6 @@ class HomeViewModel {
     
     func retrieveAssessments() {
         self.assessments = databaseService.retrieveAssessments()
-        print("Fetched \(assessments.count) assessments from the database")
         onDataUpdated?()
     }
     
