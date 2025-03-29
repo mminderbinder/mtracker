@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Question {
+    var id: Int64?
+    let assessmentId: Int64
+    let questionText: String
+    let questionOrder: Int
+}

@@ -8,8 +8,8 @@
 import Foundation
 
 struct Assessment {
-    var assessmentId: Int?
-    let shortName: String
+    var id: Int64?
+    let abbreviation: String
     let name: String
     let description: String
     let instructions: String
