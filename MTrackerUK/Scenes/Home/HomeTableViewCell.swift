@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol HomeTableViewCellDelegate: AnyObject {
+    func didTouchStartButton(for assessment: Assessment)
+}
+
+
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cardContainerView: UIView!
@@ -21,6 +26,10 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var startButton: UIButton!
     
+    weak var delegate: HomeTableViewCellDelegate?
+    
+    private var assessment: Assessment?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,9 +41,17 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func configure(with assessment: Assessment) {
+        self.assessment = assessment
         abbreviationLabel.text = assessment.abbreviation
         nameLabel.text = assessment.name
         descriptionLabel.text = assessment.description
         frequencyLabel.text = assessment.frequency
+    
+    }
+    @IBAction func startButtonTouched(_ sender: Any) {
+        if let assessment = assessment {
+            delegate?.didTouchStartButton(for: assessment)
+            
+        }
     }
 }

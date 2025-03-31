@@ -217,9 +217,9 @@ class DatabaseService {
         return assessments
     }
     
-    func retrieveAssessment(abbreviation: String) -> Assessment? {
+    func retrieveAssessment(byId id: Int64) -> Assessment? {
         do {
-            let query = assessmentTable.filter(self.abbreviation == abbreviation)
+            let query = assessmentTable.filter(self.assessmentId == id)
             
             if let row = try db.pluck(query) {
                 return Assessment(
@@ -238,30 +238,26 @@ class DatabaseService {
         return nil
     }
     
-    func retrieveAssessmentQuestions(for abbreviation: String) -> [Question] {
+    func retrieveAssessmentQuestions(forAssessmentId id: Int64) -> [Question] {
         var questions = [Question]()
         
         do {
-            if let assessment = retrieveAssessment(abbreviation: abbreviation),
-                let assessmentId = assessment.id {
+            let query = questionTable
+                .filter(questionAssessmentId == id)
+                .order(questionOrder)
+            
+            for row in try db.prepare(query) {
+                let question = Question(
+                    id: row[questionId],
+                    assessmentId: row[questionAssessmentId],
+                    questionText: row[questionText],
+                    questionOrder: row[questionOrder])
                 
-                let query = questionTable
-                    .filter(questionAssessmentId == assessmentId)
-                    .order(questionOrder)
-                
-                for row in try db.prepare(query) {
-                    let question = Question(
-                        id: row[questionId],
-                        assessmentId: row[questionAssessmentId],
-                        questionText: row[questionText],
-                        questionOrder: row[questionOrder])
-                    
-                    questions.append(question)
-                }
+                questions.append(question)
             }
             
         } catch {
-            print("Error occurred while trying to retrieve assessment questions: \(error)")
+            print("Error occurred while trying to retrieve assessment questions by ID: \(error)")
         }
         return questions
     }

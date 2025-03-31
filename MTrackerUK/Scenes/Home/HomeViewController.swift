@@ -15,11 +15,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("HomeViewController loaded")
+
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
 
         viewModel.onDataUpdated = { [weak self] in
             DispatchQueue.main.async {
@@ -27,6 +29,14 @@ class HomeViewController: UIViewController {
             }
         }
         viewModel.retrieveAssessments()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowAssessmentSegue",
+           let assessmentVC = segue.destination as? AssessmentViewController,
+           let assessment = sender as? Assessment {
+            assessmentVC.configureWithAssessment(assessment)
+        }
     }
 }
 
@@ -43,11 +53,17 @@ extension HomeViewController: UITableViewDataSource {
         let assessment = viewModel.assessment(at: indexPath.row)
         
         cell.configure(with: assessment)
-        
+        cell.delegate = self
         return cell
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
     
+}
+
+extension HomeViewController : HomeTableViewCellDelegate {
+    func didTouchStartButton(for assessment: Assessment) {
+        performSegue(withIdentifier: "ShowAssessmentSegue", sender: assessment)
+    }
 }
