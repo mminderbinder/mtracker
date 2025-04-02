@@ -4,7 +4,6 @@
 //
 //  Created by Shawn Perron on 2025-03-22.
 //
-
 import UIKit
 
 class AssessmentViewController: UIViewController {
@@ -17,7 +16,6 @@ class AssessmentViewController: UIViewController {
     
     private var viewModel: AssessmentViewModel?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,25 +25,30 @@ class AssessmentViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
+        setUpSubmitButton()
+        
+        loadUI()
+        
+        loadQuestions()
+    }
+    
+    func configureWithAssessment(_ assessment: Assessment) {
+        self.viewModel =  AssessmentViewModel(assessment: assessment)
+    }
+    
+    private func setUpSubmitButton() {
+        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
         let submitButton = UIButton(type: .system)
         submitButton.frame = CGRect(x: 16, y: 20, width: footerView.frame.width - 32, height: 44)
+        submitButton.layer.cornerRadius = 8
         submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = .systemBlue
         submitButton.setTitleColor(.white, for: .normal)
 
         footerView.addSubview(submitButton)
         tableView.tableFooterView = footerView
-        
-        loadUI()
-        
-        loadQuestions()
-        
-    }
-    
-    func configureWithAssessment(_ assessment: Assessment) {
-        self.viewModel =  AssessmentViewModel(assessment: assessment)
     }
     
    private func loadUI() {
@@ -75,14 +78,16 @@ extension AssessmentViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        
         if let question = viewModel?.question(at: indexPath.row) {
             cell.configure(with: question, index: indexPath.row)
+            
+            cell.valueChanged = { [weak self] questionIndex, value in
+                self?.viewModel?.updateAnswer(forQuestionIndex: questionIndex, value: Int64(value))
+            }
         }
         return cell
     }
 }
 
 extension AssessmentViewController: UITableViewDelegate {
-    
 }

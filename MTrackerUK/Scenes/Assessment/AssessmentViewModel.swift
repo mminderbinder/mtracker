@@ -10,6 +10,7 @@ class AssessmentViewModel {
 
     private let assessment: Assessment
     private var questions: [Question] = []
+    private var answers: [Int64: Int64] = [:]
     private let databaseService = DatabaseService.shared
     
     init(assessment: Assessment) {
@@ -27,6 +28,22 @@ class AssessmentViewModel {
         self.questions = databaseService.retrieveAssessmentQuestions(forAssessmentId: assessmentId)
         onDataUpdated?()
     }
+    
+    func updateAnswer(forQuestionIndex index: Int, value: Int64) {
+        let question  = questions[index]
+        guard let questionId = question.id else {
+            return
+        }
+        answers[questionId] = value
+    }
+    
+    func saveResults() -> Result? {
+        guard let assessmentId = assessment.id else { return nil}
+        
+        
+    }
+    
+    
     
     func numberOfRows() -> Int {
         return questions.count

@@ -11,7 +11,6 @@ protocol HomeTableViewCellDelegate: AnyObject {
     func didTouchStartButton(for assessment: Assessment)
 }
 
-
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cardContainerView: UIView!
@@ -40,6 +39,7 @@ class HomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
     func configure(with assessment: Assessment) {
         self.assessment = assessment
         abbreviationLabel.text = assessment.abbreviation
@@ -48,6 +48,7 @@ class HomeTableViewCell: UITableViewCell {
         frequencyLabel.text = assessment.frequency
     
     }
+    
     @IBAction func startButtonTouched(_ sender: Any) {
         if let assessment = assessment {
             delegate?.didTouchStartButton(for: assessment)

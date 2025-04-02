@@ -16,7 +16,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         tableView.dataSource = self
         tableView.delegate = self
         
