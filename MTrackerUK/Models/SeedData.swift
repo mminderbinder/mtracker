@@ -18,7 +18,7 @@ struct SeedData {
         SeedAssessment(
             assessment: Assessment(
                 id: nil,
-                abbreviation: "GAD-7",
+                abbreviation: AssessmentAbbreviation.GAD7.rawValue,
                 name: "General Anxiety Disorder 7",
                 description: "This easy-to-use self-administered questionnaire is used as a screening tool and severity measure for generalized anxiety disorder",
                 instructions: "Over the last two weeks, how often have you been bothered by any of the following problems?",
@@ -38,7 +38,7 @@ struct SeedData {
         SeedAssessment(
             assessment: Assessment(
                 id: nil,
-                abbreviation: "PHQ-9",
+                abbreviation: AssessmentAbbreviation.PHQ9.rawValue,
                 name: "Patient Health Questionnaire 9",
                 description: "This short, self-administered questionnaire is used as a screening tool and severity measure for major depressive disorder",
                 instructions: "Over the last two weeks, how often have you been bothered by any of the following problems?",

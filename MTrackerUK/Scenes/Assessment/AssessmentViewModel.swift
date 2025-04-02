@@ -40,10 +40,36 @@ class AssessmentViewModel {
     func saveResults() -> Result? {
         guard let assessmentId = assessment.id else { return nil}
         
+        let totalScore = answers.values.reduce(0, +)
         
+        let category = retrieveCategory(score: totalScore)
+        
+        let finalAnswers = answers.map {questionId, value in
+            Answer(id: nil,
+                   resultId: 0,
+                   questionId: questionId,
+                   value: value)
+        }
+        return Result(
+            id: nil,
+            assessmentId: assessmentId,
+            score: totalScore,
+            impairmentCategory: category,
+            dateTaken: Date(),
+            answers: finalAnswers
+        )
     }
     
-    
+    private func retrieveCategory(score: Int64) -> String {
+        if assessment.abbreviation == AssessmentAbbreviation.GAD7.rawValue {
+            return GAD7ImpairmentCategory.categorizeFromScore(score).rawValue
+            
+        } else if (assessment.abbreviation == AssessmentAbbreviation.PHQ9.rawValue) {
+            return PHQ9ImpairmentCategory.categorizeFromScore(score).rawValue
+        } else {
+            return "Unknown"
+        }
+    }
     
     func numberOfRows() -> Int {
         return questions.count

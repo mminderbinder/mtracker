@@ -5,7 +5,6 @@
 //  Created by Shawn Perron on 2025-04-02.
 //
 
-import Foundation
 enum PHQ9ImpairmentCategory: String {
     case none = "None"
     case minimal = "Minimal"
