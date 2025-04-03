@@ -72,10 +72,10 @@ class AssessmentViewModel {
     
     private func retrieveCategory(score: Int64) -> String {
         if assessment.abbreviation == AssessmentAbbreviation.GAD7.rawValue {
-            return GAD7ImpairmentCategory.categorizeFromScore(score).rawValue
+            return GADCategories.categorizeFromScore(score).rawValue
             
         } else if (assessment.abbreviation == AssessmentAbbreviation.PHQ9.rawValue) {
-            return PHQ9ImpairmentCategory.categorizeFromScore(score).rawValue
+            return PHQCategories.categorizeFromScore(score).rawValue
         } else {
             return "Unknown"
         }

@@ -1,11 +1,13 @@
 //
-//  PHQ9ImpairmentCategory.swift
+//  PHQCategories.swift
 //  MTrackerUK
 //
-//  Created by Shawn Perron on 2025-04-02.
+//  Created by Shawn Perron on 2025-04-03.
 //
 
-enum PHQ9ImpairmentCategory: String {
+import Foundation
+
+enum PHQCategories: String {
     case none = "None"
     case minimal = "Minimal"
     case mild = "Mild"
@@ -13,7 +15,7 @@ enum PHQ9ImpairmentCategory: String {
     case moderatelySevere = "Moderately Severe"
     case severe = "Severe"
     
-    static func categorizeFromScore(_ score: Int64) -> PHQ9ImpairmentCategory {
+    static func categorizeFromScore(_ score: Int64) -> PHQCategories {
         switch score {
         case 1...4:
             return .minimal
