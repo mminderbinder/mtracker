@@ -22,21 +22,23 @@ class AssessmentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
-
+        
     }
     func configure(with question: Question, index: Int) {
         self.question = question
+        self.questionIndex = index
         questionNumberLabel.text = "Question \(index + 1)"
         questionLabel.text = question.questionText
     }
     
     @objc private func segmentedControlValueChanged() {
         let value = segmentedControl.selectedSegmentIndex
+        print("Value changed for question \(questionIndex): \(value)")
         valueChanged?(questionIndex, value)
     }
 }

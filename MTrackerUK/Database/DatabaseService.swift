@@ -54,6 +54,7 @@ class DatabaseService {
                 .first!
             
             db = try Connection("\(path)/mtracker.sqlite3")
+            print("Full database path: \(path)")
             createTables()
             seedAssessmentData()
             
@@ -260,5 +261,27 @@ class DatabaseService {
             print("Error occurred while trying to retrieve assessment questions by ID: \(error)")
         }
         return questions
+    }
+    
+    func retrieveResults() -> [Result] {
+        var results = [Result]()
+        
+        do {
+            for row in try db.prepare(resultTable) {
+                let result = Result(
+                    id: row[resultId],
+                    assessmentId: row[resultAssessmentId],
+                    score: row[score],
+                    impairmentCategory: row[impairmentCategory],
+                    dateTaken: row[dateTaken]
+                )
+                results.append(result)
+            }
+        } catch {
+            print("Error retrieving results: \(error)")
+        }
+        
+        print("Found \(results.count) results in database")
+        return results
     }
 }

@@ -37,8 +37,17 @@ class AssessmentViewModel {
         answers[questionId] = value
     }
     
-    func saveResults() -> Result? {
-        guard let assessmentId = assessment.id else { return nil}
+    func saveResults() -> Bool {
+        guard let assessmentId = assessment.id else { return false}
+        
+        print("Answers count: \(answers.count)")
+        print("Answers: \(answers)")
+        
+        if answers.isEmpty {
+            print("No answers to save")
+            return false
+        }
+        
         
         let totalScore = answers.values.reduce(0, +)
         
@@ -50,7 +59,7 @@ class AssessmentViewModel {
                    questionId: questionId,
                    value: value)
         }
-        return Result(
+        let result = Result(
             id: nil,
             assessmentId: assessmentId,
             score: totalScore,
@@ -58,6 +67,7 @@ class AssessmentViewModel {
             dateTaken: Date(),
             answers: finalAnswers
         )
+        return databaseService.insertResult(result) != nil
     }
     
     private func retrieveCategory(score: Int64) -> String {

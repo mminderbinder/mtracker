@@ -49,6 +49,8 @@ class AssessmentViewController: UIViewController {
 
         footerView.addSubview(submitButton)
         tableView.tableFooterView = footerView
+        
+        submitButton.addTarget(self, action: #selector(submitButtonTouched), for: .touchUpInside)
     }
     
    private func loadUI() {
@@ -65,6 +67,15 @@ class AssessmentViewController: UIViewController {
             }
         }
         viewModel?.retrieveQuestions()
+    }
+    
+    @objc private func submitButtonTouched() {
+        if let viewModel = viewModel, viewModel.saveResults() {
+            print("Result saved")
+            
+        } else {
+            print("Failed to save result")
+        }
     }
 }
 
