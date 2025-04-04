@@ -8,8 +8,8 @@
 import Foundation
 
 enum PHQCategories: String {
-    case none = "None"
-    case minimal = "Minimal"
+    case none = "Not Specified"
+    case noneMinimal = "None-Minimal"
     case mild = "Mild"
     case moderate = "Moderate"
     case moderatelySevere = "Moderately Severe"
@@ -17,8 +17,8 @@ enum PHQCategories: String {
     
     static func categorizeFromScore(_ score: Int64) -> PHQCategories {
         switch score {
-        case 1...4:
-            return .minimal
+        case 0...4:
+            return .noneMinimal
         case 5...9:
             return .mild
         case 10...14:

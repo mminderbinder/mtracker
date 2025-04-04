@@ -8,16 +8,16 @@
 import Foundation
 
 enum GADCategories: String {
-    case none = "None"
-    case minimal = "Minimal"
+    case none = "Not Specified"
+    case noneMinimal = "None-Minimal"
     case mild = "Mild"
     case moderate = "Moderate"
     case severe = "Severe"
     
     static func categorizeFromScore(_ score: Int64) -> GADCategories {
         switch score {
-        case 1...4:
-            return .minimal
+        case 0...4:
+            return .noneMinimal
         case 5...9:
             return .mild
         case 10...14:
