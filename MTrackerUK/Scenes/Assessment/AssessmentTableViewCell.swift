@@ -44,7 +44,7 @@ class AssessmentTableViewCell: UITableViewCell {
     
     @objc private func segmentedControlValueChanged() {
         let value = segmentedControl.selectedSegmentIndex
-        print("Value changed for question \(questionIndex): \(value)")
+        print("Value changed for question \(questionIndex + 1): \(value)")
         valueChanged?(questionIndex, value)
     }
 }

@@ -77,6 +77,16 @@ class AssessmentViewController: UIViewController {
             print("Failed to save result")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailedResults" {
+            if let detailedResultsVC = segue.destination as? DetailedResultsViewController,
+               let viewModel = viewModel,
+               let resultId = viewModel.getResultId {
+                detailedResultsVC.configureWithResultId(resultId)
+            }
+        }
+    }
 }
 
 extension AssessmentViewController: UITableViewDataSource {

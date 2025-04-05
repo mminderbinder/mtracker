@@ -11,6 +11,7 @@ class AssessmentViewModel {
     private let assessment: Assessment
     private var questions: [Question] = []
     private var answers: [Int64: Int64] = [:]
+    private var resultId: Int64?
     private let databaseService = DatabaseService.shared
     
     init(assessment: Assessment) {
@@ -66,7 +67,10 @@ class AssessmentViewModel {
             dateTaken: Date(),
             answers: finalAnswers
         )
-        return databaseService.insertResult(result) != nil
+        
+        resultId = databaseService.insertResult(result)
+        
+        return resultId != nil
     }
     
     private func retrieveCategory(score: Int64) -> String {
@@ -94,11 +98,15 @@ class AssessmentViewModel {
     func question(at index: Int) -> Question {
         return questions[index]
     }
-    
+        
     var assessmentTitle: String {
         return assessment.abbreviation
     }
     var assessmentInstructions: String {
        return assessment.instructions
+    }
+    
+    var getResultId: Int64? {
+        return resultId
     }
 }

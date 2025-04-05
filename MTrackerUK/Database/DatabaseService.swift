@@ -170,6 +170,7 @@ class DatabaseService {
             return nil
         }
     }
+    
     func insertResult(_ result: Result) -> Int64? {
         do {
             let resultRowId = try db.run(resultTable.insert(
@@ -283,5 +284,48 @@ class DatabaseService {
         
         print("Found \(results.count) results in database")
         return results
+    }
+    
+    func retrieveSingleResult(byId id: Int64) -> Result? {
+        do {
+            let query = resultTable.filter(resultId == id)
+            
+            if let row = try db.pluck(query) {
+                return Result(
+                    id: row[resultId],
+                    assessmentId: row[resultAssessmentId],
+                    score: row[score],
+                    impairmentCategory: row[impairmentCategory],
+                    dateTaken: row[dateTaken]
+                )
+            }
+            
+        } catch {
+          print("Error occurred while trying to retrieve result: \(error)")
+        }
+        return nil
+    }
+    
+    func retrieveAssessmentAnswers(byId id: Int64) -> [Answer] {
+        var answers = [Answer]()
+        
+        do {
+            let query = answerTable
+                .filter(resultId == id)
+                .order(questionId)
+            
+            for row in try db.prepare(query) {
+                let answer = Answer(
+                    id: row[answerId],
+                    resultId: row[resultId],
+                    questionId: row[questionId],
+                    value: row[value])
+                
+                answers.append(answer)
+            }
+        } catch {
+            print("Error occurred while trying to retrieve answers: \(error)")
+        }
+        return answers
     }
 }

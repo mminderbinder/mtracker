@@ -460,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfP-n0-Z2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="411"/>
+            <point key="canvasLocation" x="2263" y="526"/>
         </scene>
         <!--Assessment-->
         <scene sceneID="MYR-cJ-np3">
@@ -592,6 +592,7 @@
                         <outlet property="instructionsLabel" destination="hbZ-OK-MA5" id="Dyj-jO-L9S"/>
                         <outlet property="tableView" destination="Wva-SP-Cgj" id="UTx-zZ-rZj"/>
                         <outlet property="titleLabel" destination="JyN-bX-89K" id="tqp-qL-yfN"/>
+                        <segue destination="HiJ-Tn-GBx" kind="show" identifier="ShowDetailedResultsSegue" id="nZV-Xa-j6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBH-zO-fL8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -637,6 +638,9 @@
             <point key="canvasLocation" x="576.33587786259545" y="-258.45070422535213"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="nZV-Xa-j6R"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
         <image name="house" catalog="system" width="128" height="104"/>
