@@ -69,17 +69,30 @@ class AssessmentViewController: UIViewController {
         viewModel?.retrieveQuestions()
     }
     
+    
     @objc private func submitButtonTouched() {
-        if let viewModel = viewModel, viewModel.saveResults() {
-            print("Result saved")
-            
+        guard let viewModel = viewModel else { return }
+        
+        if !viewModel.allQuestionsAnswered() {
+            showAlert()
+            return
+        }
+        
+        if viewModel.saveResults() {
+            performSegue(withIdentifier: "ShowDetailedResultsSegue", sender: self)
         } else {
-            print("Failed to save result")
+            print("Failed to save results")
         }
     }
     
+    private func showAlert() {
+        let alert = UIAlertController(title: "Assessment Incomplete", message: "Please answer all questions", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default))
+        present(alert, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailedResults" {
+        if segue.identifier == "ShowDetailedResultsSegue" {
             if let detailedResultsVC = segue.destination as? DetailedResultsViewController,
                let viewModel = viewModel,
                let resultId = viewModel.getResultId {

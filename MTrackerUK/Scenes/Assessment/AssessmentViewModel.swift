@@ -91,6 +91,10 @@ class AssessmentViewModel {
         return Int(answer)
     }
     
+    func allQuestionsAnswered() -> Bool {
+        return answers.count == questions.count
+    }
+    
     func numberOfRows() -> Int {
         return questions.count
     }
