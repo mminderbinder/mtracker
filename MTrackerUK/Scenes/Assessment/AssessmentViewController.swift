@@ -90,7 +90,9 @@ extension AssessmentViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         if let question = viewModel?.question(at: indexPath.row) {
-            cell.configure(with: question, index: indexPath.row)
+            let savedAnswer = viewModel?.answerForQuestion(withId: question.id)
+            
+            cell.configure(with: question, index: indexPath.row, selectedAnswer: savedAnswer)
             
             cell.valueChanged = { [weak self] questionIndex, value in
                 self?.viewModel?.updateAnswer(forQuestionIndex: questionIndex, value: Int64(value))

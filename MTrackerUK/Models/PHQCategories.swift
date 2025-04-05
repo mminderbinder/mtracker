@@ -15,20 +15,20 @@ enum PHQCategories: String {
     case moderatelySevere = "Moderately Severe"
     case severe = "Severe"
     
+    static let scoreMap: [ClosedRange<Int64>: PHQCategories] = [
+        0...4: .noneMinimal,
+        5...9: .mild,
+        10...14: .moderate,
+        15...19: .moderatelySevere,
+        20...27: .severe
+    ]
+    
     static func categorizeFromScore(_ score: Int64) -> PHQCategories {
-        switch score {
-        case 0...4:
-            return .noneMinimal
-        case 5...9:
-            return .mild
-        case 10...14:
-            return .moderate
-        case 15...19:
-            return .moderatelySevere
-        case 20...27:
-            return .severe
-        default:
-            return .none
+        for(range, category) in scoreMap {
+            if range.contains(score) {
+                return category
+            }
         }
+        return .none
     }
 }

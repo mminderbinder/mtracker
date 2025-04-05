@@ -48,7 +48,6 @@ class AssessmentViewModel {
             return false
         }
         
-        
         let totalScore = answers.values.reduce(0, +)
         
         let category = retrieveCategory(score: totalScore)
@@ -79,6 +78,13 @@ class AssessmentViewModel {
         } else {
             return "Unknown"
         }
+    }
+    
+    func answerForQuestion(withId questionId: Int64?) -> Int? {
+        guard let questionId = questionId, let answer = answers[questionId] else {
+            return nil
+        }
+        return Int(answer)
     }
     
     func numberOfRows() -> Int {

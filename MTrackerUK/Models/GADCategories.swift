@@ -14,18 +14,19 @@ enum GADCategories: String {
     case moderate = "Moderate"
     case severe = "Severe"
     
+    static let scoreMap: [ClosedRange<Int64>: GADCategories]  = [
+        0...4: .noneMinimal,
+        5...9: .mild,
+        10...14: .moderate,
+        15...21: .severe
+    ]
+    
     static func categorizeFromScore(_ score: Int64) -> GADCategories {
-        switch score {
-        case 0...4:
-            return .noneMinimal
-        case 5...9:
-            return .mild
-        case 10...14:
-            return .moderate
-        case 15...21:
-            return .severe
-        default:
-            return .none
+        for (range, category) in scoreMap {
+            if range.contains(score) {
+                return category
+            }
         }
+        return .none
     }
 }

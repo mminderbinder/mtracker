@@ -29,11 +29,17 @@ class AssessmentTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    func configure(with question: Question, index: Int) {
+    func configure(with question: Question, index: Int, selectedAnswer: Int?) {
         self.question = question
         self.questionIndex = index
         questionNumberLabel.text = "Question \(index + 1)"
         questionLabel.text = question.questionText
+        
+        if let answer = selectedAnswer {
+            segmentedControl.selectedSegmentIndex = answer
+        } else {
+            segmentedControl.selectedSegmentIndex = UISegmentedControl.noSegment
+        }
     }
     
     @objc private func segmentedControlValueChanged() {
