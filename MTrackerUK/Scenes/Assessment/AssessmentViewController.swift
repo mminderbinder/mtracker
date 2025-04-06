@@ -37,7 +37,6 @@ class AssessmentViewController: UIViewController {
     }
     
     private func setUpSubmitButton() {
-        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
         let submitButton = UIButton(type: .system)
@@ -77,7 +76,6 @@ class AssessmentViewController: UIViewController {
             showAlert()
             return
         }
-        
         if viewModel.saveResults() {
             performSegue(withIdentifier: "ShowDetailedResultsSegue", sender: self)
         } else {
@@ -86,7 +84,7 @@ class AssessmentViewController: UIViewController {
     }
     
     private func showAlert() {
-        let alert = UIAlertController(title: "Assessment Incomplete", message: "Please answer all questions", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Not Complete", message: "Please complete all questions", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default))
         present(alert, animated: true)
     }
@@ -103,6 +101,7 @@ class AssessmentViewController: UIViewController {
 }
 
 extension AssessmentViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRows() ?? 0
     }

@@ -8,7 +8,11 @@
 import UIKit
 
 class DetailedResultsTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var severityLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,7 +21,5 @@ class DetailedResultsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
-
 }

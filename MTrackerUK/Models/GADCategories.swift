@@ -5,9 +5,7 @@
 //  Created by Shawn Perron on 2025-04-03.
 //
 
-import Foundation
-
-enum GADCategories: String {
+enum GADCategories: String, ScoreCategorizable {
     case none = "Not Specified"
     case noneMinimal = "None-Minimal"
     case mild = "Mild"

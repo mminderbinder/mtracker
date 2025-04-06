@@ -16,6 +16,7 @@ class AssessmentTableViewCell: UITableViewCell {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     private var question: Question?
+    
     var questionIndex : Int = 0
     
     var valueChanged: ((Int, Int) -> Void)?
@@ -29,6 +30,7 @@ class AssessmentTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
+    
     func configure(with question: Question, index: Int, selectedAnswer: Int?) {
         self.question = question
         self.questionIndex = index

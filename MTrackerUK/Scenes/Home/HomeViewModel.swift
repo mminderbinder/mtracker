@@ -8,6 +8,7 @@
 import Foundation
 class HomeViewModel {
     private var assessments: [Assessment] = []
+    
     private let databaseService = DatabaseService.shared
     
     var onDataUpdated: (() -> Void)?

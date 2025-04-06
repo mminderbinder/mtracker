@@ -17,7 +17,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
@@ -55,10 +54,6 @@ extension HomeViewController: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
-}
-
-extension HomeViewController: UITableViewDelegate {
-    
 }
 
 extension HomeViewController : HomeTableViewCellDelegate {
