@@ -30,6 +30,11 @@ class ResultsViewController: UIViewController, UITableViewDelegate {
         viewModel.retrieveResults()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.retrieveResults()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailedResultsSegue",
            let detailedResultsVC = segue.destination as? DetailedResultsViewController,

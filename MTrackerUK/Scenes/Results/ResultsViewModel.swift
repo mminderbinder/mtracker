@@ -17,7 +17,6 @@ class ResultsViewModel {
     
     func retrieveResults() {
         self.results = databaseService.retrieveResults()
-        print("ResultsViewModel: Retrieved \(results.count) results from database")
         onDataUpdated?()
     }
     

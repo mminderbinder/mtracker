@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class AssessmentViewController: UIViewController {
+class AssessmentViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -119,7 +119,4 @@ extension AssessmentViewController: UITableViewDataSource {
         }
         return cell
     }
-}
-
-extension AssessmentViewController: UITableViewDelegate {
 }
