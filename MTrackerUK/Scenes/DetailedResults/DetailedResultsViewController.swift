@@ -33,6 +33,10 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        
+        
         if viewModel != nil {
             loadData()
         }
@@ -61,9 +65,9 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         assessmentLabel.text = viewModel.getAssessmentName() ?? "N/A"
         
         if let date = viewModel.getDateTaken() {
-            let Formatter = DateFormatter()
-            Formatter.dateStyle = .medium
-            dateLabel.text = Formatter.string(from: date)
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            dateLabel.text = formatter.string(from: date)
         } else {
             dateLabel.text = "N/A"
         }

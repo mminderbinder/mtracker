@@ -33,7 +33,7 @@
                                 <rect key="frame" x="0.0" y="278" width="393" height="457"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailsCell" id="PNw-Qy-QA4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultsCell" id="PNw-Qy-QA4" customClass="ResultsTableViewCell" customModule="MTrackerUK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PNw-Qy-QA4" id="rke-Cz-hpy">
@@ -74,7 +74,9 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="ResultsCell"/>
                                         <connections>
-                                            <segue destination="HiJ-Tn-GBx" kind="show" id="GOR-4U-VPB"/>
+                                            <outlet property="assessmentLabel" destination="qKa-tt-alq" id="8BT-ZX-0Yh"/>
+                                            <outlet property="dateLabel" destination="gQG-rz-orR" id="b4X-kn-Qxu"/>
+                                            <outlet property="severityLabel" destination="jlG-Us-Tcu" id="ssp-mb-gL9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -95,6 +97,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rLh-ET-9Ee"/>
+                    <connections>
+                        <outlet property="tableView" destination="K9O-YL-8h6" id="RTU-Nj-b46"/>
+                        <segue destination="HiJ-Tn-GBx" kind="show" identifier="ShowDetailedResultsSegue" id="Wa5-Jm-mZu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="As0-X0-f09" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,7 +292,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qyN-w1-kcX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qyN-w1-kcX">
                                 <rect key="frame" x="16" y="501" width="361" height="234"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -653,7 +659,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nZV-Xa-j6R"/>
+        <segue reference="Wa5-Jm-mZu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
