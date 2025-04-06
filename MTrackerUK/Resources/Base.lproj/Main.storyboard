@@ -491,14 +491,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wva-SP-Cgj">
-                                <rect key="frame" x="16" y="257.33333333333326" width="361" height="469.66666666666674"/>
+                                <rect key="frame" x="16" y="278.66666666666674" width="361" height="448.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionCell" id="e2e-7w-gWT" customClass="AssessmentTableViewCell" customModule="MTrackerUK" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="361" height="268"/>
+                                        <rect key="frame" x="0.0" y="50" width="361" height="291"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e2e-7w-gWT" id="Tgp-rL-Pbj">
-                                            <rect key="frame" x="0.0" y="0.0" width="361" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="291"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="1000" text="Question 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwf-A1-KFH">
@@ -508,13 +508,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2c-Zw-1y1">
-                                                    <rect key="frame" x="16" y="46.333333333333329" width="329" height="50.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="16" y="54.333333333333329" width="329" height="57.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="000-pu-eeC">
-                                                    <rect key="frame" x="16" y="220.66666666666666" width="329" height="32.333333333333343"/>
+                                                    <rect key="frame" x="16" y="243.66666666666666" width="329" height="32.333333333333343"/>
                                                     <segments>
                                                         <segment title="0"/>
                                                         <segment title="1"/>
@@ -523,25 +523,25 @@
                                                     </segments>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZO0-BS-n8n">
-                                                    <rect key="frame" x="16" y="104.66666666666667" width="329" height="17"/>
+                                                    <rect key="frame" x="16" y="127.66666666666669" width="329" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Several days: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kp-xf-Ef1">
-                                                    <rect key="frame" x="16" y="129.66666666666666" width="329" height="17"/>
+                                                    <rect key="frame" x="16" y="152.66666666666666" width="329" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More than half the days: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mm9-Vn-T8j">
-                                                    <rect key="frame" x="16" y="154.66666666666666" width="329" height="17"/>
+                                                    <rect key="frame" x="16" y="177.66666666666666" width="329" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearly every day: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Klm-nw-nSj">
-                                                    <rect key="frame" x="16" y="179.66666666666666" width="329" height="17"/>
+                                                    <rect key="frame" x="16" y="202.66666666666666" width="329" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -558,9 +558,9 @@
                                                 <constraint firstItem="6kp-xf-Ef1" firstAttribute="top" secondItem="ZO0-BS-n8n" secondAttribute="bottom" constant="8" id="L7M-wr-72p"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Wwf-A1-KFH" secondAttribute="trailing" constant="16" id="MLn-QW-rz8"/>
                                                 <constraint firstItem="6kp-xf-Ef1" firstAttribute="leading" secondItem="Tgp-rL-Pbj" secondAttribute="leading" constant="16" id="MmT-hd-Sa1"/>
-                                                <constraint firstItem="ZO0-BS-n8n" firstAttribute="top" secondItem="W2c-Zw-1y1" secondAttribute="bottom" constant="8" id="NmI-jx-j38"/>
+                                                <constraint firstItem="ZO0-BS-n8n" firstAttribute="top" secondItem="W2c-Zw-1y1" secondAttribute="bottom" constant="16" id="NmI-jx-j38"/>
                                                 <constraint firstItem="000-pu-eeC" firstAttribute="top" secondItem="Klm-nw-nSj" secondAttribute="bottom" constant="24" id="Nrv-Kl-ykn"/>
-                                                <constraint firstItem="W2c-Zw-1y1" firstAttribute="top" secondItem="Wwf-A1-KFH" secondAttribute="bottom" constant="8" id="Xbv-6C-byi"/>
+                                                <constraint firstItem="W2c-Zw-1y1" firstAttribute="top" secondItem="Wwf-A1-KFH" secondAttribute="bottom" constant="16" id="Xbv-6C-byi"/>
                                                 <constraint firstItem="Wwf-A1-KFH" firstAttribute="top" secondItem="Tgp-rL-Pbj" secondAttribute="topMargin" constant="8" id="dNB-YV-kGm"/>
                                                 <constraint firstAttribute="trailing" secondItem="ZO0-BS-n8n" secondAttribute="trailing" constant="16" id="ek4-e6-2RZ"/>
                                                 <constraint firstItem="Klm-nw-nSj" firstAttribute="leading" secondItem="Tgp-rL-Pbj" secondAttribute="leading" constant="16" id="lh9-aA-Atr"/>
@@ -587,8 +587,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is more text. It is a placeholder for instructions" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbZ-OK-MA5">
-                                <rect key="frame" x="16" y="232.33333333333334" width="361" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="16" y="232.33333333333334" width="361" height="38.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -659,7 +659,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wa5-Jm-mZu"/>
+        <segue reference="nZV-Xa-j6R"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>

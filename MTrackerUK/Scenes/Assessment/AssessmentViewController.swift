@@ -75,6 +75,12 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     }
     
     
+    private func showAlert() {
+        let alert = UIAlertController(title: "Not Complete", message: "Please complete all questions", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default))
+        present(alert, animated: true)
+    }
+    
     @objc private func submitButtonTouched() {
         guard let viewModel = viewModel else { return }
         
@@ -87,12 +93,6 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
         } else {
             print("Failed to save results")
         }
-    }
-    
-    private func showAlert() {
-        let alert = UIAlertController(title: "Not Complete", message: "Please complete all questions", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .default))
-        present(alert, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
