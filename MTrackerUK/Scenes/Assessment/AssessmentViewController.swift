@@ -34,16 +34,25 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setUpSubmitButton() {
+        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
         let submitButton = UIButton(type: .system)
-        submitButton.frame = CGRect(x: 16, y: 20, width: footerView.frame.width - 32, height: 44)
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.layer.cornerRadius = 8
         submitButton.setTitle("Submit", for: .normal)
         submitButton.backgroundColor = .systemBlue
         submitButton.setTitleColor(.white, for: .normal)
-
+    
         footerView.addSubview(submitButton)
+        
+        NSLayoutConstraint.activate([
+            submitButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 24),
+            submitButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
+            submitButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
+            submitButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        
         tableView.tableFooterView = footerView
         
         submitButton.addTarget(self, action: #selector(submitButtonTouched), for: .touchUpInside)
