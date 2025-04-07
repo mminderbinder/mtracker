@@ -107,7 +107,7 @@ class AssessmentViewModel {
         return assessment.abbreviation
     }
     var assessmentInstructions: String {
-       return assessment.instructions
+        return assessment.instructions
     }
     
     var getResultId: Int64? {

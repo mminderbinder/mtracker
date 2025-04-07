@@ -31,10 +31,27 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        setUpCardView()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    private func setUpCardView() {
+        cardContainerView.clipsToBounds = false
+        cardContainerView.layer.cornerRadius = 10
+        cardContainerView.backgroundColor = UIColor.systemBackground
+
+        cardContainerView.layer.shadowColor = UIColor.label.cgColor
+        cardContainerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        cardContainerView.layer.shadowRadius = 4
+        cardContainerView.layer.shadowOpacity = 0.08
+        cardContainerView.layer.masksToBounds = false
+
+        cardContainerView.layer.borderWidth = 0.3
+        cardContainerView.layer.borderColor = UIColor.systemGray2.cgColor
     }
     
     func configure(with assessment: Assessment) {

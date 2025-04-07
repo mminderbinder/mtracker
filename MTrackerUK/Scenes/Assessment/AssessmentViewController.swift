@@ -34,7 +34,6 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setUpSubmitButton() {
-        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
         let submitButton = UIButton(type: .system)
@@ -73,7 +72,6 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
         }
         viewModel?.retrieveQuestions()
     }
-    
     
     private func showAlert() {
         let alert = UIAlertController(title: "Not Complete", message: "Please complete all questions", preferredStyle: .alert)

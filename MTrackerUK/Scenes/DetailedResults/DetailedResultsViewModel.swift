@@ -62,7 +62,6 @@ class DetailedResultsViewModel {
         guard let value = scoreRangesMap[key] else { return nil }
         
         return (range: key, category: value)
-        
     }
     
     func getAssessmentName() -> String? {

@@ -626,7 +626,6 @@
                     <tabBarItem key="tabBarItem" title="Results" image="chart.bar.fill" catalog="system" id="18F-sb-h3l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UK9-sH-FyV">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -645,7 +644,6 @@
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="vCi-1d-6Ht"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x3F-a6-bxC">
-                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

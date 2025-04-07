@@ -36,7 +36,6 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
-        
         if viewModel != nil {
             loadData()
         }
@@ -73,7 +72,6 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         }
         
         scoreLabel.text = viewModel.getScore() ?? "N/A"
-        
         severityLabel.text = viewModel.getImpairmentLevel() ?? "N/A"
         
         tableView.reloadData()
