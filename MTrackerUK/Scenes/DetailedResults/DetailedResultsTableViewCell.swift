@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailedResultsTableViewCell: UITableViewCell {
-    
+        
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var severityLabel: UILabel!

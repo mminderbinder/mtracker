@@ -33,7 +33,7 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 44
         tableView.estimatedRowHeight = 44
         
         if viewModel != nil {
