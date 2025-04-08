@@ -14,6 +14,8 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var instructionsLabel: UILabel!
     
+    @IBOutlet weak var submitButton: UIButton!
+    
     private var viewModel: AssessmentViewModel?
     
     override func viewDidLoad() {
@@ -21,8 +23,6 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
 
         tableView.dataSource = self
         tableView.delegate = self
-    
-        setUpSubmitButton()
         
         loadUI()
         
@@ -32,31 +32,7 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     func configureWithAssessment(_ assessment: Assessment) {
         self.viewModel =  AssessmentViewModel(assessment: assessment)
     }
-    
-    private func setUpSubmitButton() {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
-        let submitButton = UIButton(type: .system)
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.layer.cornerRadius = 8
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.backgroundColor = .systemBlue
-        submitButton.setTitleColor(.white, for: .normal)
-    
-        footerView.addSubview(submitButton)
-        
-        NSLayoutConstraint.activate([
-            submitButton.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 24),
-            submitButton.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
-            submitButton.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
-            submitButton.heightAnchor.constraint(equalToConstant: 44)
-        ])
-        
-        tableView.tableFooterView = footerView
-        
-        submitButton.addTarget(self, action: #selector(submitButtonTouched), for: .touchUpInside)
-    }
-    
    private func loadUI() {
         guard let viewModel = viewModel else { return }
        
@@ -79,7 +55,7 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
         present(alert, animated: true)
     }
     
-    @objc private func submitButtonTouched() {
+    @IBAction func submitButtonTouched(_ sender: UIButton) {
         guard let viewModel = viewModel else { return }
         
         if !viewModel.allQuestionsAnswered() {

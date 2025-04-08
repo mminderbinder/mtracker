@@ -492,6 +492,27 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Wva-SP-Cgj">
                                 <rect key="frame" x="0.0" y="257.33333333333326" width="393" height="469.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="lUF-Iq-o05">
+                                    <rect key="frame" x="0.0" y="362" width="393" height="95"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hld-iG-SFV">
+                                            <rect key="frame" x="24" y="24" width="345" height="47"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                            <connections>
+                                                <action selector="submitButtonTouched:" destination="r8z-Ke-H39" eventType="touchUpInside" id="UAs-2J-elx"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="Hld-iG-SFV" firstAttribute="leading" secondItem="lUF-Iq-o05" secondAttribute="leading" constant="24" id="KWM-Vr-63b"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hld-iG-SFV" secondAttribute="bottom" constant="24" id="ah6-ld-bsl"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hld-iG-SFV" secondAttribute="trailing" constant="24" id="jrY-Ba-PwR"/>
+                                        <constraint firstItem="Hld-iG-SFV" firstAttribute="top" secondItem="lUF-Iq-o05" secondAttribute="top" constant="24" id="kt7-4v-L0c"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionCell" id="e2e-7w-gWT" customClass="AssessmentTableViewCell" customModule="MTrackerUK" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="284"/>
@@ -609,6 +630,7 @@
                     <navigationItem key="navigationItem" id="PB4-9c-gnl"/>
                     <connections>
                         <outlet property="instructionsLabel" destination="hbZ-OK-MA5" id="Dyj-jO-L9S"/>
+                        <outlet property="submitButton" destination="Hld-iG-SFV" id="j4n-sg-Q0x"/>
                         <outlet property="tableView" destination="Wva-SP-Cgj" id="UTx-zZ-rZj"/>
                         <outlet property="titleLabel" destination="JyN-bX-89K" id="tqp-qL-yfN"/>
                         <segue destination="HiJ-Tn-GBx" kind="show" identifier="ShowDetailedResultsSegue" id="nZV-Xa-j6R"/>
@@ -658,7 +680,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wa5-Jm-mZu"/>
+        <segue reference="nZV-Xa-j6R"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="chart.bar.fill" catalog="system" width="128" height="90"/>
