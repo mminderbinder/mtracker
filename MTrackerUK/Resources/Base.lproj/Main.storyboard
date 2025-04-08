@@ -493,6 +493,7 @@
                     <connections>
                         <outlet property="assessmentLabel" destination="jxx-Jy-eoE" id="0ws-uu-aTp"/>
                         <outlet property="dateLabel" destination="9d2-JI-hfS" id="SoO-tf-rNs"/>
+                        <outlet property="deleteButton" destination="4Ns-Fh-uq3" id="YDZ-NG-4BM"/>
                         <outlet property="scoreLabel" destination="tU5-pW-3uY" id="guv-Wx-B8h"/>
                         <outlet property="severityLabel" destination="KnG-Xp-tiu" id="4EN-TR-Wj6"/>
                         <outlet property="tableView" destination="qyN-w1-kcX" id="AzQ-tz-AXk"/>

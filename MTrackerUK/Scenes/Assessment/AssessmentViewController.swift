@@ -72,7 +72,7 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
             if let detailedResultsVC = segue.destination as? DetailedResultsViewController,
                let viewModel = viewModel,
                let resultId = viewModel.getResultId {
-                detailedResultsVC.configureWithResultId(resultId)
+                detailedResultsVC.configureWithResultId(resultId, shouldHideUIComponents: true)
             }
         }
     }

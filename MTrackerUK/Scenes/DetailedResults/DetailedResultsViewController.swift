@@ -19,7 +19,11 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var severityLabel: UILabel!
     
+    @IBOutlet weak var deleteButton: UIButton!
+    
     private var viewModel: DetailedResultsViewModel?
+    
+    private var shouldHideUIComponents: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,13 +34,20 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         tableView.rowHeight = 44
         tableView.estimatedRowHeight = 44
         
+        if shouldHideUIComponents {
+            navigationItem.hidesBackButton = true
+            deleteButton.isHidden = true
+        }
+        
         if viewModel != nil {
             loadData()
         }
     }
     
-    func configureWithResultId(_ resultId: Int64) {
+    func configureWithResultId(_ resultId: Int64, shouldHideUIComponents: Bool = false) {
+       
         self.viewModel = DetailedResultsViewModel(resultId: resultId)
+        self.shouldHideUIComponents = shouldHideUIComponents
         
         if isViewLoaded {
             loadData()
