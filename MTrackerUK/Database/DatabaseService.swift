@@ -328,4 +328,20 @@ class DatabaseService {
         }
         return answers
     }
+    
+    func deleteResult(byId id: Int64) -> Bool {
+        do {
+            try db.transaction {
+                let answerQuery = answerTable.filter(answerResultId == id)
+                try db.run(answerQuery.delete())
+                
+                let resultQuery = resultTable.filter(resultId == id)
+                try db.run(resultQuery.delete())
+            }
+            return true
+        } catch {
+            print("Error deleting result: \(error)")
+            return false
+        }
+    }
 }

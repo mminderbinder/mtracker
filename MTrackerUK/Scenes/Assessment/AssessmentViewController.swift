@@ -13,9 +13,7 @@ class AssessmentViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var instructionsLabel: UILabel!
-    
-    @IBOutlet weak var submitButton: UIButton!
-    
+        
     private var viewModel: AssessmentViewModel?
     
     override func viewDidLoad() {

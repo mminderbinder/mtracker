@@ -21,12 +21,6 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
     
     private var viewModel: DetailedResultsViewModel?
     
-    private var result: Result?
-    
-    private var resultId: Int64?
-    
-    private var scoreMap: [String: String] = [:]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,6 +70,23 @@ class DetailedResultsViewController: UIViewController, UITableViewDelegate {
         
         tableView.reloadData()
     }
+    
+    @IBAction func onDeleteButtonTouched(_ sender: UIButton) {
+        let alert = UIAlertController(
+            title: "Delete Result",
+            message: "Are you sure you want to delete this result?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            guard let self = self, let viewModel = self.viewModel else { return }
+            
+            _ = viewModel.deleteResult()
+            self.navigationController?.popViewController(animated: true)
+        })
+        present(alert, animated: true)
+    }
+    
 }
 
 extension DetailedResultsViewController: UITableViewDataSource {

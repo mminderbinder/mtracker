@@ -64,6 +64,10 @@ class DetailedResultsViewModel {
         return (range: key, category: value)
     }
     
+    func deleteResult() -> Bool {
+        return databaseService.deleteResult(byId: resultId)
+    }
+    
     func getAssessmentName() -> String? {
         return assessmentName
     }

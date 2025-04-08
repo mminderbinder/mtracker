@@ -414,6 +414,27 @@
                                         <constraint firstAttribute="trailing" secondItem="dbe-nv-WH5" secondAttribute="trailing" constant="16" id="zTu-QC-9TZ"/>
                                     </constraints>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3S8-lQ-osb">
+                                    <rect key="frame" x="0.0" y="284" width="393" height="65"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ns-Fh-uq3">
+                                            <rect key="frame" x="160" y="15.333333333333332" width="73.333333333333314" height="34.333333333333343"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="filled" title="Delete">
+                                                <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="onDeleteButtonTouched:" destination="HiJ-Tn-GBx" eventType="touchUpInside" id="5Sq-YM-oKT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="4Ns-Fh-uq3" firstAttribute="centerY" secondItem="3S8-lQ-osb" secondAttribute="centerY" id="W0M-ng-jEZ"/>
+                                        <constraint firstItem="4Ns-Fh-uq3" firstAttribute="centerX" secondItem="3S8-lQ-osb" secondAttribute="centerX" id="cEw-I1-Fan"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ScoreInterpretationCell" id="CLK-XQ-4Qs" customClass="DetailedResultsTableViewCell" customModule="MTrackerUK">
                                         <rect key="frame" x="0.0" y="212" width="393" height="44"/>
@@ -630,7 +651,6 @@
                     <navigationItem key="navigationItem" id="PB4-9c-gnl"/>
                     <connections>
                         <outlet property="instructionsLabel" destination="hbZ-OK-MA5" id="Dyj-jO-L9S"/>
-                        <outlet property="submitButton" destination="Hld-iG-SFV" id="j4n-sg-Q0x"/>
                         <outlet property="tableView" destination="Wva-SP-Cgj" id="UTx-zZ-rZj"/>
                         <outlet property="titleLabel" destination="JyN-bX-89K" id="tqp-qL-yfN"/>
                         <segue destination="HiJ-Tn-GBx" kind="show" identifier="ShowDetailedResultsSegue" id="nZV-Xa-j6R"/>
@@ -687,6 +707,9 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tableBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
